@@ -1097,44 +1097,84 @@
         </p>
 
         <form id="miniTestForm" onsubmit="event.preventDefault(); submitMiniTest();">
+            <!-- ВОПРОС 1 -->
             <div class="test-question">
                 <p>1. Как он обычно реагирует на новую задачу?</p>
-                <label><input type="radio" name="q1" value="ptica"> Тянет время, ждёт напоминаний, сам не уточняет детали.</label>
-                <label><input type="radio" name="q1" value="homiak"> Сначала спрашивает, что получит лично он (бонус, процент, «что мне с этого?»).</label>
-                <label><input type="radio" name="q1" value="lisa"> Интересуется статусом задачи, видимостью результата, как это выглядит для руководства.</label>
+                <label><input type="radio" name="q1" value="ptica"> Тянет время, ждет напоминаний, сам не уточняет детали.</label>
+                <label><input type="radio" name="q1" value="homiak"> Сначала спрашивает, что получит лично он (бонус, процент и т.п.).</label>
+                <label><input type="radio" name="q1" value="lisa"> Интересуется, кто увидит результат, как это выглядит для руководства.</label>
                 <label><input type="radio" name="q1" value="profi"> Уточняет детали, сроки, критерии качества и спокойно берётся за дело.</label>
+                <label><input type="radio" name="q1" value="none"> Трудно сказать / ведёт себя по-разному.</label>
             </div>
 
+            <!-- ВОПРОС 2 -->
             <div class="test-question">
                 <p>2. Как он ведёт себя под контролем?</p>
                 <label><input type="radio" name="q2" value="ptica"> Начинает шевелиться только при жёстком контроле и дедлайнах.</label>
                 <label><input type="radio" name="q2" value="homiak"> Делает ровно столько, сколько оплачивается, не больше.</label>
-                <label><input type="radio" name="q2" value="lisa"> Активизируется, когда есть шанс показать себя «на верху».</label>
+                <label><input type="radio" name="q2" value="lisa"> Активизируется, когда есть шанс показать себя «наверху».</label>
                 <label><input type="radio" name="q2" value="profi"> Контроль воспринимает нормально, держит стабильное качество.</label>
+                <label><input type="radio" name="q2" value="none"> Нельзя выделить один вариант, всё очень ситуативно.</label>
             </div>
 
+            <!-- ВОПРОС 3 -->
             <div class="test-question">
                 <p>3. Как он ведёт себя в конфликте с клиентом или коллегой?</p>
                 <label><input type="radio" name="q3" value="ptica"> Уходит от ответственности, переводит стрелки, старается спрятаться.</label>
-                <label><input type="radio" name="q3" value="homiak"> В первую очередь защищает свои интересы и бонус.</label>
+                <label><input type="radio" name="q3" value="homiak"> В первую очередь защищает свои интересы и деньги.</label>
                 <label><input type="radio" name="q3" value="lisa"> Думает о том, как ситуация повлияет на его статус и репутацию.</label>
                 <label><input type="radio" name="q3" value="profi"> Смотрит на ситуацию через призму работы и результата для компании.</label>
+                <label><input type="radio" name="q3" value="none"> Ведёт себя по-разному, общего паттерна нет.</label>
             </div>
 
+            <!-- ВОПРОС 4 -->
             <div class="test-question">
                 <p>4. Как он относится к обучению и изменениям?</p>
                 <label><input type="radio" name="q4" value="ptica"> Избегает, откладывает, соглашается только под давлением.</label>
                 <label><input type="radio" name="q4" value="homiak"> Готов учиться, если это прямо влияет на его доход.</label>
                 <label><input type="radio" name="q4" value="lisa"> Учится, если это усиливает его позицию и влияние.</label>
-                <label><input type="radio" name="q4" value="profi"> Видит в обучении инструмент для результата, задаёт вопросы по сути.</label>
+                <label><input type="radio" name="q4" value="profi"> Видит в обучении инструмент для результата и задаёт вопросы по сути.</label>
+                <label><input type="radio" name="q4" value="none"> Однозначного отношения нет, всё зависит от ситуации.</label>
             </div>
 
+            <!-- ВОПРОС 5 -->
             <div class="test-question">
                 <p>5. Как он говорит о работе в целом?</p>
                 <label><input type="radio" name="q5" value="ptica"> Чаще жалуется, говорит про усталость, «слишком много требуют».</label>
                 <label><input type="radio" name="q5" value="homiak"> Делает акцент на зарплате, премиях, «выгоде».</label>
-                <label><input type="radio" name="q5" value="lisa"> Говорит о статусе, положении, «кто кому подчиняется».</label>
+                <label><input type="radio" name="q5" value="lisa"> Больше про статус, позиции, «кто кому подчиняется».</label>
                 <label><input type="radio" name="q5" value="profi"> Обсуждает задачи, клиентов, качество, профессиональный рост.</label>
+                <label><input type="radio" name="q5" value="none"> Трудно выделить один преобладающий мотив.</label>
+            </div>
+
+            <!-- ВОПРОС 6 -->
+            <div class="test-question">
+                <p>6. Как он реагирует на дополнительную ответственность?</p>
+                <label><input type="radio" name="q6" value="ptica"> Старается избежать, ищет, кому бы передать.</label>
+                <label><input type="radio" name="q6" value="homiak"> Считает, сколько за это заплатят, и от этого зависит согласие.</label>
+                <label><input type="radio" name="q6" value="lisa"> Оценивает, даст ли это больше влияния и статуса.</label>
+                <label><input type="radio" name="q6" value="profi"> Смотрит, насколько это логично для процесса и результата, и берёт, если видит смысл.</label>
+                <label><input type="radio" name="q6" value="none"> Реакция очень разная, нет устойчивой модели.</label>
+            </div>
+
+            <!-- ВОПРОС 7 -->
+            <div class="test-question">
+                <p>7. Как он ведёт себя, когда руководитель «отпускает» контроль?</p>
+                <label><input type="radio" name="q7" value="ptica"> Расслабляется, теряет темп, начинаются задержки.</label>
+                <label><input type="radio" name="q7" value="homiak"> Делает минимальный объём, старается особо не напрягаться.</label>
+                <label><input type="radio" name="q7" value="lisa"> Подстраивает картинку так, чтобы выглядеть хорошо при минимуме усилий.</label>
+                <label><input type="radio" name="q7" value="profi"> Держит стабильный уровень, сам контролирует качество.</label>
+                <label><input type="radio" name="q7" value="none"> Поведение сильно зависит от конкретного периода.</label>
+            </div>
+
+            <!-- ВОПРОС 8 -->
+            <div class="test-question">
+                <p>8. Как он относится к клиентам и внутренним «заказчикам»?</p>
+                <label><input type="radio" name="q8" value="ptica"> Старается поскорее «отделаться», избегает сложных случаев.</label>
+                <label><input type="radio" name="q8" value="homiak"> В первую очередь думает о том, что выгодно ему лично.</label>
+                <label><input type="radio" name="q8" value="lisa"> Важно, как клиент/заказчик влияет на его статус и связи.</label>
+                <label><input type="radio" name="q8" value="profi"> Смотрит на качество сервиса и долгосрочный результат для компании.</label>
+                <label><input type="radio" name="q8" value="none"> От клиента к клиенту — по-разному, общей линии нет.</label>
             </div>
 
             <button type="submit" class="btn-primary btn-full">
@@ -1149,6 +1189,7 @@
         </form>
     </div>
 </div>
+
 
 <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec";
@@ -1215,15 +1256,60 @@
     });
 
     function submitMiniTest() {
-        const types = { ptica: 0, homiak: 0, lisa: 0, profi: 0 };
-        const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+    const types = { ptica: 0, homiak: 0, lisa: 0, profi: 0 };
+    const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
 
-        for (const q of questions) {
-            const checked = document.querySelector('input[name="' + q + '"]:checked');
-            if (checked && types.hasOwnProperty(checked.value)) {
-                types[checked.value]++;
-            }
+    for (const q of questions) {
+        const checked = document.querySelector('input[name="' + q + '"]:checked');
+        if (checked && types.hasOwnProperty(checked.value)) {
+            types[checked.value]++;
         }
+        // если value === 'none' или ничего не выбрано — просто не учитываем
+    }
+
+    let mainType = null;
+    let maxScore = -1;
+    for (const [key, value] of Object.entries(types)) {
+        if (value > maxScore) {
+            maxScore = value;
+            mainType = key;
+        }
+    }
+
+    const resultEl = document.getElementById('testResult');
+    const nextStepEl = document.getElementById('testNextStep');
+
+    if (!mainType || maxScore <= 0) {
+        if (resultEl) {
+            resultEl.textContent =
+                'Пожалуйста, ответьте хотя бы на несколько вопросов, чтобы мы могли определить типаж.';
+        }
+        if (nextStepEl) {
+            nextStepEl.style.display = 'none';
+        }
+        return;
+    }
+
+    const labels = {
+        ptica: 'Птица — работает под принуждением, без внешнего контроля «падает» по результату.',
+        homiak: 'Хомяк — сильная ориентация на деньги и личную выгоду, риск «обнуления» при снижении бонусов.',
+        lisa: 'Лиса — про статус, влияние и собственные интересы, важна видимость и позиция.',
+        profi: 'Профи — делает по совести, фокус на задаче, качестве и результате компании.'
+    };
+
+    if (resultEl) {
+        resultEl.textContent =
+            'По вашим ответам этот сотрудник ближе всего к типажу: ' + (labels[mainType] || mainType);
+    }
+
+    if (nextStepEl) {
+        nextStepEl.style.display = 'block';
+    }
+
+    // отправка в Google Sheet остаётся прежней
+    sendToGoogleSheet(mainType, types);
+}
+
 
         let mainType = null;
         let maxScore = -1;
