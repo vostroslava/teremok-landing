@@ -180,14 +180,14 @@
         }
 
         .hero-subtitle {
-            font-size: 18px; /* +2 */
+            font-size: 18px;
             color: var(--text-muted);
             max-width: 520px;
             margin-bottom: 14px;
         }
 
         .hero-text {
-            font-size: 16px; /* +2 */
+            font-size: 16px;
             color: #e5e7eb;
             max-width: 520px;
             margin-bottom: 22px;
@@ -209,7 +209,7 @@
             background: linear-gradient(135deg, #f97316, #fb923c);
             color: #0f172a;
             font-weight: 600;
-            font-size: 15px; /* +1 */
+            font-size: 15px;
             box-shadow: 0 18px 40px rgba(249,115,22,0.45);
             display: inline-flex;
             align-items: center;
@@ -223,12 +223,12 @@
             border: 1px solid rgba(148,163,184,0.4);
             background: rgba(15,23,42,0.8);
             color: var(--text-main);
-            font-size: 15px; /* +2 */
+            font-size: 15px;
             cursor: pointer;
         }
 
         .hero-note {
-            font-size: 14px; /* +2 */
+            font-size: 14px;
             color: var(--text-muted);
         }
 
@@ -257,7 +257,7 @@
 
         .hero-chip {
             border-radius: 999px;
-            font-size: 13px; /* +2 */
+            font-size: 13px;
             padding: 6px 10px;
             background: rgba(15,23,42,0.9);
             border: 1px solid rgba(148,163,184,0.4);
@@ -279,7 +279,7 @@
 
         .hero-card-caption {
             margin-top: 12px;
-            font-size: 13px; /* +2 */
+            font-size: 13px;
             color: var(--text-muted);
         }
 
@@ -303,7 +303,7 @@
         }
 
         .section-lead {
-            font-size: 16px; /* +2 */
+            font-size: 16px;
             color: var(--text-muted);
         }
 
@@ -328,14 +328,14 @@
 
         .card p {
             margin: 0 0 10px;
-            font-size: 16px; /* +2 */
+            font-size: 16px;
             color: #e5e7eb;
         }
 
         .card ul {
             margin: 0;
             padding-left: 18px;
-            font-size: 16px; /* +2 */
+            font-size: 16px;
             color: var(--text-main);
         }
 
@@ -351,7 +351,7 @@
         }
 
         .pill {
-            font-size: 14px; /* +2 */
+            font-size: 14px;
             padding: 6px 10px;
             border-radius: 999px;
             background: rgba(15,23,42,0.9);
@@ -370,7 +370,7 @@
             border-left: 2px solid var(--accent);
             padding: 10px 12px;
             border-radius: 12px;
-            font-size: 15px; /* +2 */
+            font-size: 15px;
             color: var(--text-muted);
             margin-top: 8px;
         }
@@ -384,17 +384,17 @@
 
         .expert-name {
             font-weight: 600;
-            font-size: 16px; /* +1 */
+            font-size: 16px;
         }
 
         .expert-role {
-            font-size: 15px; /* +2 */
+            font-size: 15px;
             color: var(--text-muted);
             margin-bottom: 6px;
         }
 
         .metrics-list {
-            font-size: 15px; /* +2 */
+            font-size: 15px;
             color: var(--text-main);
             margin: 8px 0 0;
             padding-left: 16px;
@@ -426,7 +426,7 @@
         }
 
         label {
-            font-size: 15px; /* +2 */
+            font-size: 15px;
             color: var(--text-main);
             display: block;
             margin-bottom: 4px;
@@ -445,7 +445,7 @@
             border: 1px solid rgba(148,163,184,0.55);
             background: rgba(15,23,42,0.96);
             color: var(--text-main);
-            font-size: 16px; /* +2 */
+            font-size: 16px;
             outline: none;
             transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
         }
@@ -462,18 +462,18 @@
         }
 
         .field-hint {
-            font-size: 13px; /* +2 */
+            font-size: 13px;
             color: var(--text-muted);
         }
 
         .form-note {
-            font-size: 14px; /* +2 */
+            font-size: 14px;
             color: var(--text-muted);
             margin-top: 10px;
         }
 
         .form-secondary {
-            font-size: 14px; /* +2 */
+            font-size: 14px;
             color: var(--text-muted);
         }
 
@@ -513,7 +513,7 @@
             text-decoration: underline;
         }
 
-        /* Modal */
+        /* Modal base */
         .modal-backdrop {
             position: fixed;
             inset: 0;
@@ -579,6 +579,49 @@
         .btn-full {
             width: 100%;
             justify-content: center;
+            text-align: center;
+        }
+
+        .modal-note {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .modal-result {
+            font-size: 16px;
+            color: var(--text-main);
+            margin-top: 14px;
+        }
+
+        .test-question {
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+
+        .test-question p {
+            margin: 0 0 6px;
+            font-weight: 500;
+        }
+
+        .test-question label {
+            display: block;
+            font-size: 13px;
+            color: #e5e7eb;
+            margin-bottom: 4px;
+        }
+
+        .test-access-banner {
+            margin-bottom: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(249,115,22,0.16);
+            border: 1px solid rgba(249,115,22,0.7);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #fed7aa;
             text-align: center;
         }
 
@@ -649,7 +692,7 @@
                 <a href="#results">Что получите</a>
                 <a href="#experts">Авторы</a>
                 <a href="#registration">Формат</a>
-                <a href="javascript:void(0)" class="nav-cta" onclick="openLeadModal()">
+                <a href="javascript:void(0)" class="nav-cta" onclick="openLeadModal('lead')">
                     Записаться
                     <span>5–7 минут на заявку</span>
                 </a>
@@ -675,11 +718,11 @@
                             кто работает только «за деньги» или «под принуждением».
                         </p>
                         <div class="hero-actions">
-                            <button class="btn-primary" onclick="openLeadModal()">
+                            <button class="btn-primary" onclick="openLeadModal('lead')">
                                 Записаться на программу «Теремок»
                             </button>
-                            <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">
-                                Узнать, как работает модель
+                            <button class="btn-secondary" onclick="openLeadModal('test')">
+                                Пройти мини-тест по сотруднику
                             </button>
                         </div>
                         <div class="hero-note">
@@ -895,7 +938,7 @@
             </div>
         </section>
 
-        <!-- Registration (без встроенной формы, только CTA + описание) -->
+        <!-- Registration / CTA -->
         <section class="section section-alt" id="registration">
             <div class="container">
                 <div class="section-header">
@@ -913,22 +956,23 @@
                                 Нажмите на кнопку ниже, чтобы открыть форму заявки. Мы спросим только то, что действительно
                                 нужно для предметного разговора: кто вы, какая команда и как с вами связаться.
                             </p>
-                            <button type="button" class="btn-primary btn-full" onclick="openLeadModal()">
+                            <button type="button" class="btn-primary btn-full" onclick="openLeadModal('lead')">
                                 Открыть форму заявки
                             </button>
                             <p class="form-note">
                                 После отправки заявки вы получите:
                             </p>
                             <ul class="metrics-list">
-                                <li>PDF с программой «Теремок» и форматом участия;</li>
-                                <li>ориентиры по длительности и стоимости;</li>
                                 <li>связь с консультантом «Сталкер-Медиа» для уточнения деталей под вашу компанию.</li>
                             </ul>
                         </div>
                         <div class="form-secondary">
                             <p>
                                 Если вам удобнее написать сами, вы можете просто отправить нам короткое сообщение
-                                в мессенджере с пометкой «Теремок» и количеством сотрудников — и мы продолжим диалог там.
+                                в Telegram с пометкой «Теремок» —
+                                <a href="https://t.me/stalkermedia1" target="_blank" rel="noopener noreferrer">
+                                    наш аккаунт @stalkermedia1
+                                </a>.
                             </p>
                             <p style="margin-top:10px;">
                                 Но если вы заполните форму, мы заранее подготовимся к разговору: посмотрим на ваш запрос,
@@ -951,20 +995,25 @@
     </footer>
 </div>
 
-<!-- Модальное окно с формой заявки -->
+<!-- Модальное окно заявки -->
 <div class="modal-backdrop" id="leadModal" aria-hidden="true">
     <div class="modal-overlay" onclick="closeLeadModal()"></div>
 
     <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <button class="modal-close" type="button" onclick="closeLeadModal()">×</button>
 
+        <div id="testAccessBanner" class="test-access-banner" style="display:none;">
+            ТЕСТ ДОСТУПЕН ТОЛЬКО ПОСЛЕ РЕГИСТРАЦИИ
+        </div>
+
         <h2 id="modalTitle">Заявка на программу «Теремок»</h2>
         <p class="modal-subtitle">
             Оставьте контакты и кратко опишите вашу ситуацию. Мы свяжемся в ближайший рабочий день,
-            вышлем программу и обсудим, как «Теремок» может помочь именно вашей команде.
+            обсудим формат участия и откроем доступ к мини-тесту по сотруднику.
         </p>
 
-        <form action="https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec"
+        <form id="leadForm"
+              action="https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec"
               method="post" target="_blank">
             <div class="field-group">
                 <label for="name">Имя <span class="required">*</span></label>
@@ -1023,7 +1072,7 @@
             </div>
 
             <button type="submit" class="btn-primary btn-full">
-                Отправить заявку
+                Отправить и перейти к мини-тесту
             </button>
 
             <p class="form-note">
@@ -1034,10 +1083,89 @@
     </div>
 </div>
 
+<!-- Модальное окно с мини-тестом -->
+<div class="modal-backdrop" id="testModal" aria-hidden="true">
+    <div class="modal-overlay" onclick="closeTestModal()"></div>
+
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="testModalTitle">
+        <button class="modal-close" type="button" onclick="closeTestModal()">×</button>
+
+        <h2 id="testModalTitle">Мини-тест по одному сотруднику</h2>
+        <p class="modal-subtitle">
+            Выберите одного конкретного сотрудника и отвечайте, как он ведёт себя чаще всего.
+            По результатам определим, к какому типажу «Теремка» он ближе.
+        </p>
+
+        <form id="miniTestForm" onsubmit="event.preventDefault(); submitMiniTest();">
+            <div class="test-question">
+                <p>1. Как он обычно реагирует на новую задачу?</p>
+                <label><input type="radio" name="q1" value="ptica"> Тянет время, ждёт напоминаний, сам не уточняет детали.</label>
+                <label><input type="radio" name="q1" value="homiak"> Сначала спрашивает, что получит лично он (бонус, процент, «что мне с этого?»).</label>
+                <label><input type="radio" name="q1" value="lisa"> Интересуется статусом задачи, видимостью результата, как это выглядит для руководства.</label>
+                <label><input type="radio" name="q1" value="profi"> Уточняет детали, сроки, критерии качества и спокойно берётся за дело.</label>
+            </div>
+
+            <div class="test-question">
+                <p>2. Как он ведёт себя под контролем?</p>
+                <label><input type="radio" name="q2" value="ptica"> Начинает шевелиться только при жёстком контроле и дедлайнах.</label>
+                <label><input type="radio" name="q2" value="homiak"> Делает ровно столько, сколько оплачивается, не больше.</label>
+                <label><input type="radio" name="q2" value="lisa"> Активизируется, когда есть шанс показать себя «на верху».</label>
+                <label><input type="radio" name="q2" value="profi"> Контроль воспринимает нормально, держит стабильное качество.</label>
+            </div>
+
+            <div class="test-question">
+                <p>3. Как он ведёт себя в конфликте с клиентом или коллегой?</p>
+                <label><input type="radio" name="q3" value="ptica"> Уходит от ответственности, переводит стрелки, старается спрятаться.</label>
+                <label><input type="radio" name="q3" value="homiak"> В первую очередь защищает свои интересы и бонус.</label>
+                <label><input type="radio" name="q3" value="lisa"> Думает о том, как ситуация повлияет на его статус и репутацию.</label>
+                <label><input type="radio" name="q3" value="profi"> Смотрит на ситуацию через призму работы и результата для компании.</label>
+            </div>
+
+            <div class="test-question">
+                <p>4. Как он относится к обучению и изменениям?</p>
+                <label><input type="radio" name="q4" value="ptica"> Избегает, откладывает, соглашается только под давлением.</label>
+                <label><input type="radio" name="q4" value="homiak"> Готов учиться, если это прямо влияет на его доход.</label>
+                <label><input type="radio" name="q4" value="lisa"> Учится, если это усиливает его позицию и влияние.</label>
+                <label><input type="radio" name="q4" value="profi"> Видит в обучении инструмент для результата, задаёт вопросы по сути.</label>
+            </div>
+
+            <div class="test-question">
+                <p>5. Как он говорит о работе в целом?</p>
+                <label><input type="radio" name="q5" value="ptica"> Чаще жалуется, говорит про усталость, «слишком много требуют».</label>
+                <label><input type="radio" name="q5" value="homiak"> Делает акцент на зарплате, премиях, «выгоде».</label>
+                <label><input type="radio" name="q5" value="lisa"> Говорит о статусе, положении, «кто кому подчиняется».</label>
+                <label><input type="radio" name="q5" value="profi"> Обсуждает задачи, клиентов, качество, профессиональный рост.</label>
+            </div>
+
+            <button type="submit" class="btn-primary btn-full">
+                Получить результат
+            </button>
+
+            <p id="testResult" class="modal-result"></p>
+            <p id="testNextStep" class="modal-note" style="display:none;">
+                Мы сохранили ваши ответы. При созвоне по программе «Теремок» сможем разобрать этого сотрудника
+                и посмотреть, как его типаж влияет на отдел и бизнес.
+            </p>
+        </form>
+    </div>
+</div>
+
 <script>
-    function openLeadModal() {
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec";
+
+    let leadData = null;
+    let leadModalMode = 'lead'; // 'lead' или 'test'
+
+    function openLeadModal(mode) {
+        leadModalMode = mode || 'lead';
         const modal = document.getElementById('leadModal');
         if (!modal) return;
+
+        const banner = document.getElementById('testAccessBanner');
+        if (banner) {
+            banner.style.display = (leadModalMode === 'test') ? 'block' : 'none';
+        }
+
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -1049,9 +1177,126 @@
         document.body.style.overflow = '';
     }
 
+    function openTestModal() {
+        const modal = document.getElementById('testModal');
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const resultEl = document.getElementById('testResult');
+        const nextStepEl = document.getElementById('testNextStep');
+        if (resultEl) resultEl.textContent = '';
+        if (nextStepEl) nextStepEl.style.display = 'none';
+        const testForm = document.getElementById('miniTestForm');
+        if (testForm) {
+            testForm.reset();
+        }
+    }
+
+    function closeTestModal() {
+        const modal = document.getElementById('testModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const leadForm = document.getElementById('leadForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(leadForm);
+                leadData = Object.fromEntries(formData.entries());
+
+                closeLeadModal();
+                openTestModal();
+            });
+        }
+    });
+
+    function submitMiniTest() {
+        const types = { ptica: 0, homiak: 0, lisa: 0, profi: 0 };
+        const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+
+        for (const q of questions) {
+            const checked = document.querySelector('input[name="' + q + '"]:checked');
+            if (checked && types.hasOwnProperty(checked.value)) {
+                types[checked.value]++;
+            }
+        }
+
+        let mainType = null;
+        let maxScore = -1;
+        for (const [key, value] of Object.entries(types)) {
+            if (value > maxScore) {
+                maxScore = value;
+                mainType = key;
+            }
+        }
+
+        const resultEl = document.getElementById('testResult');
+        const nextStepEl = document.getElementById('testNextStep');
+
+        if (!mainType) {
+            if (resultEl) {
+                resultEl.textContent =
+                    'Пожалуйста, ответьте хотя бы на несколько вопросов, чтобы мы могли определить типаж.';
+            }
+            return;
+        }
+
+        const labels = {
+            ptica: 'Птица — работает под принуждением, без внешнего контроля «падает» по результату.',
+            homiak: 'Хомяк — сильная ориентация на деньги и личную выгоду, риск «обнуления» при снижении бонусов.',
+            lisa: 'Лиса — про статус, влияние и собственные интересы, важна видимость и позиция.',
+            profi: 'Профи — делает по совести, фокус на задаче, качестве и результате компании.'
+        };
+
+        if (resultEl) {
+            resultEl.textContent =
+                'По вашим ответам этот сотрудник ближе всего к типажу: ' + (labels[mainType] || mainType);
+        }
+
+        if (nextStepEl) {
+            nextStepEl.style.display = 'block';
+        }
+
+        sendToGoogleSheet(mainType, types);
+    }
+
+    function sendToGoogleSheet(mainType, types) {
+        const fd = new FormData();
+
+        if (leadData) {
+            fd.append('name', leadData.name || '');
+            fd.append('role', leadData.role || '');
+            fd.append('company', leadData.company || '');
+            fd.append('team_size', leadData.team_size || '');
+            fd.append('phone', leadData.phone || '');
+            fd.append('messenger', leadData.messenger || '');
+            fd.append('email', leadData.email || '');
+            fd.append('request', leadData.request || '');
+        }
+
+        fd.append('test_main_type', mainType || '');
+        fd.append('test_ptica', types.ptica || 0);
+        fd.append('test_homiak', types.homiak || 0);
+        fd.append('test_lisa', types.lisa || 0);
+        fd.append('test_profi', types.profi || 0);
+
+        fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: fd,
+            mode: 'no-cors'
+        }).catch(function (err) {
+            console.error('Ошибка отправки в Google Script', err);
+        });
+    }
+
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeLeadModal();
+            closeTestModal();
         }
     });
 </script>
