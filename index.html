@@ -1190,17 +1190,88 @@
     </div>
 </div>
 
-
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec";
 
 let leadData = null;
 
+/**
+ * Открыть модал заявки.
+ * origin = 'lead'  — обычная заявка
+ * origin = 'test'  — человек пришёл за мини-тестом
+ */
+function openLeadModal(origin) {
+    const modal = document.getElementById('leadModal');
+    if (!modal) return;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    const banner = document.getElementById('testAccessBanner');
+    const titleEl = document.getElementById('modalTitle');
+    const subtitleEl = modal.querySelector('.modal-subtitle');
+
+    if (banner) {
+        banner.style.display = (origin === 'test') ? 'block' : 'none';
+    }
+
+    if (titleEl && subtitleEl) {
+        if (origin === 'test') {
+            titleEl.textContent = 'Доступ к мини-тесту по сотруднику';
+            subtitleEl.textContent =
+                'Сначала оставьте контакты — после этого мы откроем мини-тест по одному сотруднику и сохраним результат в вашу заявку.';
+        } else {
+            titleEl.textContent = 'Заявка на программу «Теремок»';
+            subtitleEl.textContent =
+                'Оставьте контакты и кратко опишите вашу ситуацию. Мы свяжемся в ближайший рабочий день, обсудим формат участия и откроем доступ к мини-тесту по сотруднику.';
+        }
+    }
+}
+
+function closeLeadModal() {
+    const modal = document.getElementById('leadModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function openTestModal() {
+    const modal = document.getElementById('testModal');
+    if (!modal) return;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    const resultEl = document.getElementById('testResult');
+    const nextStepEl = document.getElementById('testNextStep');
+    if (resultEl) resultEl.textContent = '';
+    if (nextStepEl) nextStepEl.style.display = 'none';
+
+    const testForm = document.getElementById('miniTestForm');
+    if (testForm) {
+        testForm.reset();
+    }
+}
+
+function closeTestModal() {
+    const modal = document.getElementById('testModal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+/**
+ * Обработка формы заявки:
+ * — не отправляем напрямую в Google;
+ * — сохраняем данные в leadData;
+ * — закрываем модал заявки и открываем модал с тестом.
+ */
 document.addEventListener('DOMContentLoaded', function () {
     const leadForm = document.getElementById('leadForm');
     if (leadForm) {
         leadForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
             const formData = new FormData(leadForm);
             leadData = Object.fromEntries(formData.entries());
 
@@ -1210,52 +1281,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-    function closeLeadModal() {
-        const modal = document.getElementById('leadModal');
-        if (!modal) return;
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    function openTestModal() {
-        const modal = document.getElementById('testModal');
-        if (!modal) return;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        const resultEl = document.getElementById('testResult');
-        const nextStepEl = document.getElementById('testNextStep');
-        if (resultEl) resultEl.textContent = '';
-        if (nextStepEl) nextStepEl.style.display = 'none';
-        const testForm = document.getElementById('miniTestForm');
-        if (testForm) {
-            testForm.reset();
-        }
-    }
-
-    function closeTestModal() {
-        const modal = document.getElementById('testModal');
-        if (!modal) return;
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const leadForm = document.getElementById('leadForm');
-        if (leadForm) {
-            leadForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(leadForm);
-                leadData = Object.fromEntries(formData.entries());
-
-                closeLeadModal();
-                openTestModal();
-            });
-        }
-    });
-
-  function submitMiniTest() {
+/**
+ * Отправка мини-теста: считаем баллы, показываем результат, шлём всё в Google Script.
+ */
+function submitMiniTest() {
     const types = { ptica: 0, homiak: 0, lisa: 0, profi: 0 };
     const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
 
@@ -1312,10 +1341,13 @@ document.addEventListener('DOMContentLoaded', function () {
     sendToGoogleSheet(mainType, types, resultText);
 }
 
+/**
+ * Отправка данных в Google Sheet (форма + тест).
+ */
 function sendToGoogleSheet(mainType, types, resultText) {
     const fd = new FormData();
 
-    // данные формы регистрации (мы их раньше сохранили в leadData при submit формы)
+    // данные формы регистрации
     if (window.leadData) {
         fd.append('name', leadData.name || '');
         fd.append('role', leadData.role || '');
@@ -1326,7 +1358,7 @@ function sendToGoogleSheet(mainType, types, resultText) {
         fd.append('email', leadData.email || '');
         fd.append('request', leadData.request || '');
     } else {
-        // на всякий случай, если по какой-то причине тест прошли без формы
+        // на случай, если тест почему-то прошли без формы
         fd.append('name', '');
         fd.append('role', '');
         fd.append('company', '');
@@ -1354,148 +1386,13 @@ function sendToGoogleSheet(mainType, types, resultText) {
     });
 }
 
-
-function sendToGoogleSheet(mainType, types, resultText) {
-    const fd = new FormData();
-
-    // данные формы регистрации (мы их раньше сохранили в leadData при submit формы)
-    if (window.leadData) {
-        fd.append('name', leadData.name || '');
-        fd.append('role', leadData.role || '');
-        fd.append('company', leadData.company || '');
-        fd.append('team_size', leadData.team_size || '');
-        fd.append('phone', leadData.phone || '');
-        fd.append('messenger', leadData.messenger || '');
-        fd.append('email', leadData.email || '');
-        fd.append('request', leadData.request || '');
+// закрытие модалок по Esc
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeLeadModal();
+        closeTestModal();
     }
-
-    // данные теста
-    fd.append('test_main_type', mainType || '');
-    fd.append('test_main_text', resultText || '');
-    fd.append('test_ptica', types.ptica || 0);
-    fd.append('test_homiak', types.homiak || 0);
-    fd.append('test_lisa', types.lisa || 0);
-    fd.append('test_profi', types.profi || 0);
-
-    fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: fd,
-        mode: 'no-cors'
-    }).catch(function (err) {
-        console.error('Ошибка отправки в Google Script', err);
-    });
-}
-
-    const resultEl = document.getElementById('testResult');
-    const nextStepEl = document.getElementById('testNextStep');
-
-    if (!mainType || maxScore <= 0) {
-        if (resultEl) {
-            resultEl.textContent =
-                'Пожалуйста, ответьте хотя бы на несколько вопросов, чтобы мы могли определить типаж.';
-        }
-        if (nextStepEl) {
-            nextStepEl.style.display = 'none';
-        }
-        return;
-    }
-
-    const labels = {
-        ptica: 'Птица — работает под принуждением, без внешнего контроля «падает» по результату.',
-        homiak: 'Хомяк — сильная ориентация на деньги и личную выгоду, риск «обнуления» при снижении бонусов.',
-        lisa: 'Лиса — про статус, влияние и собственные интересы, важна видимость и позиция.',
-        profi: 'Профи — делает по совести, фокус на задаче, качестве и результате компании.'
-    };
-
-    if (resultEl) {
-        resultEl.textContent =
-            'По вашим ответам этот сотрудник ближе всего к типажу: ' + (labels[mainType] || mainType);
-    }
-
-    if (nextStepEl) {
-        nextStepEl.style.display = 'block';
-    }
-
-    // отправка в Google Sheet остаётся прежней
-    sendToGoogleSheet(mainType, types);
-}
-
-
-        let mainType = null;
-        let maxScore = -1;
-        for (const [key, value] of Object.entries(types)) {
-            if (value > maxScore) {
-                maxScore = value;
-                mainType = key;
-            }
-        }
-
-        const resultEl = document.getElementById('testResult');
-        const nextStepEl = document.getElementById('testNextStep');
-
-        if (!mainType) {
-            if (resultEl) {
-                resultEl.textContent =
-                    'Пожалуйста, ответьте хотя бы на несколько вопросов, чтобы мы могли определить типаж.';
-            }
-            return;
-        }
-
-        const labels = {
-            ptica: 'Птица — работает под принуждением, без внешнего контроля «падает» по результату.',
-            homiak: 'Хомяк — сильная ориентация на деньги и личную выгоду, риск «обнуления» при снижении бонусов.',
-            lisa: 'Лиса — про статус, влияние и собственные интересы, важна видимость и позиция.',
-            profi: 'Профи — делает по совести, фокус на задаче, качестве и результате компании.'
-        };
-
-        if (resultEl) {
-            resultEl.textContent =
-                'По вашим ответам этот сотрудник ближе всего к типажу: ' + (labels[mainType] || mainType);
-        }
-
-        if (nextStepEl) {
-            nextStepEl.style.display = 'block';
-        }
-
-        sendToGoogleSheet(mainType, types);
-    }
-
-    function sendToGoogleSheet(mainType, types) {
-        const fd = new FormData();
-
-        if (leadData) {
-            fd.append('name', leadData.name || '');
-            fd.append('role', leadData.role || '');
-            fd.append('company', leadData.company || '');
-            fd.append('team_size', leadData.team_size || '');
-            fd.append('phone', leadData.phone || '');
-            fd.append('messenger', leadData.messenger || '');
-            fd.append('email', leadData.email || '');
-            fd.append('request', leadData.request || '');
-        }
-
-        fd.append('test_main_type', mainType || '');
-        fd.append('test_ptica', types.ptica || 0);
-        fd.append('test_homiak', types.homiak || 0);
-        fd.append('test_lisa', types.lisa || 0);
-        fd.append('test_profi', types.profi || 0);
-
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: fd,
-            mode: 'no-cors'
-        }).catch(function (err) {
-            console.error('Ошибка отправки в Google Script', err);
-        });
-    }
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeLeadModal();
-            closeTestModal();
-        }
-    });
+});
 </script>
 </body>
 </html>
