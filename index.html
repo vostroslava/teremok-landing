@@ -7,16 +7,14 @@
     <meta name="description" content="Авторская программа «Теремок» для собственников, руководителей и HR: как понять, на кого в команде делать ставки и перестать кормить минусовых сотрудников.">
     <style>
         :root {
-            --bg: #020617;
-            --bg-alt: #030712;
+            --bg: #0f172a;
+            --bg-alt: #020617;
             --card: #020617;
-            --card-soft: #020617;
             --accent: #f97316;
-            --accent-soft: rgba(249,115,22,0.16);
+            --accent-soft: rgba(249,115,22,0.1);
             --text-main: #e5e7eb;
             --text-muted: #9ca3af;
             --border-subtle: #1f2937;
-            --border-strong: #4b5563;
             --error: #f97373;
         }
 
@@ -28,13 +26,11 @@
             margin: 0;
             padding: 0;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(148,163,184,0.25) 0, transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(15,23,42,0.85) 0, transparent 55%),
-                var(--bg);
+            background: radial-gradient(circle at top left, #1f2937 0, transparent 55%),
+                        radial-gradient(circle at bottom right, #111827 0, transparent 55%),
+                        var(--bg);
             color: var(--text-main);
-            line-height: 1.7;
-            font-size: 17px;
+            line-height: 1.6;
         }
 
         .page-wrap {
@@ -47,15 +43,15 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            backdrop-filter: blur(18px);
-            background: linear-gradient(to bottom, rgba(15,23,42,0.96), rgba(15,23,42,0.88), transparent);
-            border-bottom: 1px solid rgba(31,41,55,0.85);
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to bottom, rgba(15,23,42,0.97), rgba(15,23,42,0.85), transparent);
+            border-bottom: 1px solid rgba(148,163,184,0.18);
         }
 
         .nav {
-            max-width: 1120px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 12px 20px;
+            padding: 14px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -69,33 +65,30 @@
         }
 
         .logo-mark {
-            width: 38px;
-            height: 38px;
-            border-radius: 12px;
-            background:
-                radial-gradient(circle at 20% 0, #fed7aa 0, transparent 55%),
-                radial-gradient(circle at 80% 100%, #f97316 0, transparent 60%),
-                #020617;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: radial-gradient(circle at 20% 0, #fed7aa 0, transparent 50%),
+                        radial-gradient(circle at 80% 100%, #f97316 0, transparent 55%),
+                        #111827;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow:
-                0 0 0 1px rgba(248,250,252,0.08),
-                0 16px 40px rgba(0,0,0,0.75);
-            font-size: 20px;
-            font-weight: 800;
+            box-shadow: 0 0 0 1px rgba(248,250,252,0.06), 0 20px 45px rgba(0,0,0,0.59);
+            font-size: 16px;
+            font-weight: 700;
             color: #f9fafb;
         }
 
         .logo-text-primary {
             font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.06em;
+            font-size: 16px;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         .logo-text-secondary {
-            font-size: 14px;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -106,7 +99,7 @@
         }
 
         .nav-links a {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--text-muted);
             text-decoration: none;
             padding: 6px 10px;
@@ -116,29 +109,27 @@
 
         .nav-links a:hover {
             color: #f9fafb;
-            background-color: rgba(148,163,184,0.16);
+            background-color: rgba(148,163,184,0.12);
         }
 
         .nav-cta {
-            padding: 10px 18px;
+            padding: 8px 16px;
             border-radius: 999px;
-            background: radial-gradient(circle at 0% 0%, #fed7aa 0, transparent 55%),
-                        linear-gradient(135deg, #f97316, #fb923c);
-            color: #0b1120;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            color: #0f172a;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 14px;
             border: none;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 14px 32px rgba(249,115,22,0.55);
-            white-space: nowrap;
+            box-shadow: 0 12px 30px rgba(249,115,22,0.45);
         }
 
         .nav-cta span {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.9;
         }
 
@@ -150,170 +141,112 @@
             padding: 56px 20px;
         }
 
-        .section-hero {
-            background:
-                radial-gradient(circle at 0% 0%, rgba(148,163,184,0.35) 0, transparent 55%),
-                radial-gradient(circle at 100% 0%, rgba(249,115,22,0.15) 0, transparent 60%),
-                var(--bg-alt);
+        .section-dark {
+            background: radial-gradient(circle at top right, rgba(55,65,81,0.6) 0, transparent 60%),
+                        rgba(15,23,42,0.98);
         }
 
         .section-alt {
-            background:
-                radial-gradient(circle at 100% 100%, rgba(15,23,42,0.9) 0, transparent 60%),
-                #020617;
-        }
-
-        .section-muted {
-            background:
-                radial-gradient(circle at 0% 100%, rgba(30,64,175,0.55) 0, transparent 60%),
-                #020617;
+            background: radial-gradient(circle at bottom left, rgba(30,64,175,0.35) 0, transparent 60%),
+                        var(--bg-alt);
         }
 
         .container {
-            max-width: 1120px;
+            max-width: 1080px;
             margin: 0 auto;
         }
 
         /* Hero */
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-            gap: 34px;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+            gap: 32px;
             align-items: center;
         }
 
         .hero-kicker {
-            font-size: 14px;
-            letter-spacing: 0.16em;
+            font-size: 12px;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: clamp(32px, 4.4vw, 40px);
-            margin: 0 0 16px;
+            font-size: clamp(28px, 4vw, 36px);
+            margin: 0 0 12px;
             letter-spacing: 0.02em;
         }
 
         .hero-subtitle {
-            font-size: 19px;
-            color: #e5e7eb;
-            max-width: 620px;
-            margin-bottom: 12px;
+            font-size: 18px; /* +2 */
+            color: var(--text-muted);
+            max-width: 520px;
+            margin-bottom: 14px;
         }
 
         .hero-text {
-            font-size: 17px;
-            color: var(--text-muted);
-            max-width: 620px;
-            margin-bottom: 24px;
+            font-size: 16px; /* +2 */
+            color: #e5e7eb;
+            max-width: 520px;
+            margin-bottom: 22px;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
+            gap: 12px;
             align-items: center;
             margin-bottom: 18px;
         }
 
-        .btn-primary,
-        .btn-secondary {
+        .btn-primary {
+            padding: 12px 22px;
             border-radius: 999px;
             border: none;
             cursor: pointer;
+            background: linear-gradient(135deg, #f97316, #fb923c);
+            color: #0f172a;
             font-weight: 600;
-            font-size: 17px;
-            padding: 15px 28px;
+            font-size: 15px; /* +1 */
+            box-shadow: 0 18px 40px rgba(249,115,22,0.45);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-        }
-
-        .btn-main {
-            font-size: 18px;
-            padding: 16px 32px;
-        }
-
-        .btn-primary {
-            background:
-                radial-gradient(circle at 0% 0%, #fed7aa 0, transparent 55%),
-                linear-gradient(135deg, #f97316, #fb923c);
-            color: #0b1120;
-            box-shadow: 0 18px 40px rgba(249,115,22,0.65);
+            gap: 6px;
         }
 
         .btn-secondary {
-            background: rgba(15,23,42,0.9);
-            color: #e5e7eb;
-            border: 1px solid rgba(148,163,184,0.55);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.65);
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-1px) scale(1.02);
-            box-shadow: 0 22px 50px rgba(0,0,0,0.75);
-        }
-
-        .btn-primary:active,
-        .btn-secondary:active {
-            transform: translateY(0) scale(0.99);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.7);
-        }
-
-        /* Лёгкая пульсация для главной кнопки теста */
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 18px 40px rgba(249,115,22,0.65);
-            }
-            50% {
-                box-shadow: 0 22px 55px rgba(249,115,22,0.9);
-            }
-            100% {
-                box-shadow: 0 18px 40px rgba(249,115,22,0.65);
-            }
-        }
-
-        .btn-main-primary {
-            animation: pulse-glow 2.8s ease-in-out infinite;
+            padding: 11px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.4);
+            background: rgba(15,23,42,0.8);
+            color: var(--text-main);
+            font-size: 15px; /* +2 */
+            cursor: pointer;
         }
 
         .hero-note {
-            font-size: 15px;
+            font-size: 14px; /* +2 */
             color: var(--text-muted);
-        }
-
-        .hero-note a {
-            color: #f97316;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .hero-note a:hover {
-            text-decoration: underline;
         }
 
         .hero-card {
-            border-radius: 22px;
-            padding: 22px 20px 18px;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(249,250,251,0.03) 0, transparent 55%),
-                rgba(15,23,42,0.96);
-            border: 1px solid rgba(148,163,184,0.55);
-            box-shadow: 0 24px 55px rgba(0,0,0,0.85);
+            border-radius: 20px;
+            padding: 20px 18px;
+            background: radial-gradient(circle at top left, rgba(248,250,252,0.06) 0, transparent 55%),
+                        rgba(15,23,42,0.95);
+            border: 1px solid rgba(148,163,184,0.35);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.65);
         }
 
         .hero-card-title {
-            font-size: 15px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.16em;
             color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .hero-card-grid {
@@ -324,18 +257,18 @@
 
         .hero-chip {
             border-radius: 999px;
-            font-size: 14px;
-            padding: 7px 11px;
-            background: rgba(15,23,42,0.85);
-            border: 1px solid rgba(148,163,184,0.6);
+            font-size: 13px; /* +2 */
+            padding: 6px 10px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
             display: inline-flex;
             align-items: center;
-            gap: 7px;
+            gap: 6px;
         }
 
         .hero-chip span {
-            width: 9px;
-            height: 9px;
+            width: 8px;
+            height: 8px;
             border-radius: 999px;
             background: #22c55e;
         }
@@ -346,31 +279,31 @@
 
         .hero-card-caption {
             margin-top: 12px;
-            font-size: 14px;
+            font-size: 13px; /* +2 */
             color: var(--text-muted);
         }
 
         .section-header {
-            max-width: 760px;
-            margin-bottom: 26px;
+            max-width: 720px;
+            margin-bottom: 24px;
         }
 
         .section-kicker {
-            font-size: 13px;
-            letter-spacing: 0.18em;
+            font-size: 11px;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 600;
         }
 
         h2 {
             font-size: 22px;
-            margin: 0 0 12px;
+            margin: 0 0 10px;
         }
 
         .section-lead {
-            font-size: 17px;
+            font-size: 16px; /* +2 */
             color: var(--text-muted);
         }
 
@@ -381,51 +314,49 @@
         }
 
         .card {
-            border-radius: 20px;
+            border-radius: 18px;
             padding: 18px 18px 16px;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(248,250,252,0.04) 0, transparent 55%),
-                rgba(15,23,42,0.97);
+            background: rgba(15,23,42,0.96);
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 22px 45px rgba(0,0,0,0.85);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.6);
         }
 
         .card h3 {
             margin: 0 0 10px;
-            font-size: 17px;
+            font-size: 18px;
         }
 
         .card p {
             margin: 0 0 10px;
-            font-size: 17px;
+            font-size: 16px; /* +2 */
             color: #e5e7eb;
         }
 
         .card ul {
             margin: 0;
-            padding-left: 20px;
-            font-size: 16px;
+            padding-left: 18px;
+            font-size: 16px; /* +2 */
             color: var(--text-main);
         }
 
         .card ul li + li {
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
         .pill-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .pill {
-            font-size: 14px;
+            font-size: 14px; /* +2 */
             padding: 6px 10px;
             border-radius: 999px;
-            background: rgba(30,64,175,0.35);
-            border: 1px solid rgba(129,140,248,0.85);
-            color: #e0e7ff;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.4);
+            color: var(--text-muted);
         }
 
         .grid-3 {
@@ -435,13 +366,13 @@
         }
 
         .highlight {
-            background: linear-gradient(to right, var(--accent-soft), rgba(15,23,42,0.95));
-            border-left: 3px solid var(--accent);
+            background: linear-gradient(to right, rgba(249,115,22,0.08), transparent);
+            border-left: 2px solid var(--accent);
             padding: 10px 12px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 15px; /* +2 */
             color: var(--text-muted);
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         /* Experts */
@@ -453,35 +384,34 @@
 
         .expert-name {
             font-weight: 600;
-            font-size: 17px;
+            font-size: 16px; /* +1 */
         }
 
         .expert-role {
-            font-size: 15px;
+            font-size: 15px; /* +2 */
             color: var(--text-muted);
             margin-bottom: 6px;
         }
 
         .metrics-list {
-            font-size: 15px;
+            font-size: 15px; /* +2 */
             color: var(--text-main);
             margin: 8px 0 0;
-            padding-left: 18px;
+            padding-left: 16px;
         }
 
         .metrics-list li + li {
             margin-top: 3px;
         }
 
-        /* Form */
+        /* Form / registration */
         .form-wrapper {
-            border-radius: 22px;
-            padding: 24px 20px 20px;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(248,250,252,0.05) 0, transparent 55%),
-                rgba(15,23,42,0.98);
-            border: 1px solid rgba(148,163,184,0.7);
-            box-shadow: 0 26px 52px rgba(0,0,0,0.9);
+            border-radius: 20px;
+            padding: 22px 20px 20px;
+            background: radial-gradient(circle at top left, rgba(248,250,252,0.04) 0, transparent 55%),
+                        rgba(15,23,42,0.96);
+            border: 1px solid rgba(148,163,184,0.5);
+            box-shadow: 0 22px 50px rgba(0,0,0,0.7);
         }
 
         .form-grid {
@@ -496,7 +426,7 @@
         }
 
         label {
-            font-size: 15px;
+            font-size: 15px; /* +2 */
             color: var(--text-main);
             display: block;
             margin-bottom: 4px;
@@ -510,136 +440,55 @@
 
         .input, .select, textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 9px 11px;
             border-radius: 12px;
-            border: 1px solid rgba(148,163,184,0.7);
-            background: rgba(15,23,42,0.98);
+            border: 1px solid rgba(148,163,184,0.55);
+            background: rgba(15,23,42,0.96);
             color: var(--text-main);
-            font-size: 16px;
+            font-size: 16px; /* +2 */
             outline: none;
             transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
         }
 
         .input:focus, .select:focus, textarea:focus {
             border-color: var(--accent);
-            box-shadow: 0 0 0 1px rgba(249,115,22,0.45);
+            box-shadow: 0 0 0 1px rgba(249,115,22,0.4);
             background-color: #020617;
         }
 
         textarea {
             resize: vertical;
-            min-height: 96px;
+            min-height: 90px;
         }
 
         .field-hint {
-            font-size: 13px;
+            font-size: 13px; /* +2 */
             color: var(--text-muted);
         }
 
         .form-note {
-            font-size: 14px;
+            font-size: 14px; /* +2 */
             color: var(--text-muted);
             margin-top: 10px;
         }
 
         .form-secondary {
-            font-size: 15px;
+            font-size: 14px; /* +2 */
             color: var(--text-muted);
-        }
-
-        .form-secondary ul {
-            padding-left: 18px;
         }
 
         .required {
             color: var(--accent);
         }
 
-        /* Quiz */
-        .quiz-card {
-            margin-top: 8px;
-        }
-
-        .quiz-intro {
-            font-size: 15px;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .quiz-question {
-            margin-bottom: 16px;
-        }
-
-        .quiz-question-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-size: 15px;
-        }
-
-        .quiz-options label {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            cursor: pointer;
-            padding: 7px 9px;
-            border-radius: 10px;
-            transition: background-color 0.12s ease, border-color 0.12s ease;
-            border: 1px solid transparent;
-        }
-
-        .quiz-options label:hover {
-            background-color: rgba(31,41,55,0.9);
-            border-color: rgba(55,65,81,0.9);
-        }
-
-        .quiz-options input[type="radio"] {
-            margin-top: 3px;
-        }
-
-        .quiz-actions {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            align-items: center;
-        }
-
-        .quiz-result {
-            display: none;
-            margin-top: 14px;
-            padding: 11px 12px;
-            border-radius: 12px;
-            background: rgba(22,163,74,0.09);
-            border: 1px solid rgba(34,197,94,0.65);
-            font-size: 15px;
-            color: #bbf7d0;
-        }
-
-        .quiz-result strong {
-            font-size: 16px;
-        }
-
-        .quiz-error {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--error);
-        }
-
         footer {
-            border-top: 1px solid rgba(31,41,55,0.95);
+            border-top: 1px solid rgba(148,163,184,0.25);
             padding: 16px 20px 22px;
             background: #020617;
         }
 
         .footer-inner {
-            max-width: 1120px;
+            max-width: 1080px;
             margin: 0 auto;
             display: flex;
             flex-wrap: wrap;
@@ -649,26 +498,96 @@
         }
 
         .footer-inner small {
-            font-size: 13px;
+            font-size: 11px;
             color: var(--text-muted);
         }
 
         .footer-inner a {
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 11px;
             text-decoration: none;
         }
 
         .footer-inner a:hover {
-            color: #f9fafb;
+            color: #e5e7eb;
             text-decoration: underline;
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15,23,42,0.75);
+            backdrop-filter: blur(6px);
+        }
+
+        .modal-window {
+            position: relative;
+            max-width: 640px;
+            width: 100%;
+            margin: 16px;
+            padding: 24px 22px 22px;
+            border-radius: 20px;
+            background: radial-gradient(circle at top left, rgba(248,250,252,0.06) 0, transparent 55%),
+                        rgba(15,23,42,0.98);
+            border: 1px solid rgba(148,163,184,0.5);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.85);
+            z-index: 101;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-window h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0 0 16px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.5);
+            background: rgba(15,23,42,0.9);
+            color: #e5e7eb;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
         }
 
         @media (max-width: 900px) {
             .hero,
             .two-cols,
             .experts-grid,
-            .form-grid {
+            .form-grid,
+            .grid-3 {
                 grid-template-columns: minmax(0, 1fr);
             }
 
@@ -678,6 +597,7 @@
 
             header {
                 position: static;
+                background: rgba(15,23,42,0.96);
             }
 
             .nav {
@@ -709,10 +629,6 @@
                 justify-content: center;
                 text-align: center;
             }
-
-            .btn-main {
-                width: 100%;
-            }
         }
     </style>
 </head>
@@ -731,11 +647,11 @@
                 <a href="#about">О программе</a>
                 <a href="#who">Для кого</a>
                 <a href="#results">Что получите</a>
-                <a href="#test">Мини-тест</a>
                 <a href="#experts">Авторы</a>
-                <a href="#registration" class="nav-cta">
-                    Оставить заявку
-                    <span>5–7 минут</span>
+                <a href="#registration">Формат</a>
+                <a href="javascript:void(0)" class="nav-cta" onclick="openLeadModal()">
+                    Записаться
+                    <span>5–7 минут на заявку</span>
                 </a>
             </div>
         </div>
@@ -743,12 +659,12 @@
 
     <main>
         <!-- Hero -->
-        <section class="section section-hero" id="top">
+        <section class="section section-dark" id="top">
             <div class="container">
                 <div class="hero">
                     <div>
                         <div class="hero-kicker">Программа для собственников, руководителей и HR</div>
-                        <h1>«Теремок»: на&nbsp;кого в&nbsp;команде делать ставки</h1>
+                        <h1>«Теремок»: на кого в&nbsp;команде делать ставки</h1>
                         <p class="hero-subtitle">
                             Разберёмся, кто в вашей компании Птицы, Хомяки, Лисы и Профи,
                             и как перестать «кормить» одних за счёт других.
@@ -759,16 +675,16 @@
                             кто работает только «за деньги» или «под принуждением».
                         </p>
                         <div class="hero-actions">
-                            <button class="btn-primary btn-main btn-main-primary" onclick="document.getElementById('test').scrollIntoView({behavior: 'smooth'});">
-                                Пройти мини-тест по сотруднику
+                            <button class="btn-primary" onclick="openLeadModal()">
+                                Записаться на программу «Теремок»
                             </button>
-                            <button class="btn-secondary btn-main" onclick="document.getElementById('registration').scrollIntoView({behavior: 'smooth'});">
-                                Оставить заявку на «Теремок»
+                            <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'});">
+                                Узнать, как работает модель
                             </button>
                         </div>
                         <div class="hero-note">
-                            Сначала можете <a href="#test">быстро проверить одного сотрудника по модели</a>,
-                            а затем оставить контакты — вышлем программу и обсудим форматы участия.
+                            Оставьте контакты — вышлем программу и стоимость,
+                            поможем подобрать удобный формат участия.
                         </div>
                     </div>
                     <aside class="hero-card" aria-hidden="true">
@@ -814,7 +730,7 @@
                 </div>
                 <div class="two-cols">
                     <div class="card">
-                        <h3>От «людей вообще» к живым типажам</h3>
+                        <h3>Чёткие типажи вместо размытых впечатлений о людях</h3>
                         <p>
                             В модели «Теремок» мы работаем с узнаваемыми образами:
                         </p>
@@ -842,7 +758,7 @@
         </section>
 
         <!-- Who it's for -->
-        <section class="section section-muted" id="who">
+        <section class="section section-dark" id="who">
             <div class="container">
                 <div class="section-header">
                     <div class="section-kicker">Кому будет полезно</div>
@@ -858,14 +774,14 @@
                         <ul>
                             <li>Собственники и генеральные директора, которые хотят понимать реальный потенциал команды.</li>
                             <li>Руководители отделов и филиалов, уставшие тащить на себе «тяжёлых» сотрудников.</li>
-                            <li>Руководители по продажам, которые хотят отличать результатников от статусников и «бытовых» сотрудников.</li>
+                            <li>Руководители по продажам, коммерческие директора и руководители клиентского сервиса, которым важно видеть, кто реально делает выручку, а кто только создаёт видимость работы.</li>
                         </ul>
                     </div>
                     <div class="card">
                         <h3>HR, рекрутеры и внутренние тренеры</h3>
                         <ul>
-                            <li>HR-директора и HR-генералисты, выстраивающие систему оценки и мотивации.</li>
-                            <li>Рекрутеры, которым важно отбирать не просто «руки», а вовлечённых людей.</li>
+                            <li>HR-директора, выстраивающие систему оценки, мотивации и развития сотрудников.</li>
+                            <li>Рекрутеры, которым важно отличать Птиц и Хомяков от Профи и будущих лидеров ещё на этапе отбора.</li>
                             <li>Корпоративные тренеры, работающие с вовлечённостью, ответственностью и управленческой культурой.</li>
                         </ul>
                         <div class="pill-list">
@@ -929,255 +845,8 @@
             </div>
         </section>
 
-        <!-- Mini test -->
-        <section class="section section-muted" id="test">
-            <div class="container">
-                <div class="section-header">
-                    <div class="section-kicker">Мини-тест</div>
-                    <h2>Кто ваш сотрудник по «Теремку»</h2>
-                    <p class="section-lead">
-                        Держите в голове одного конкретного сотрудника, отвечайте интуитивно по 8 вопросам —
-                        и увидите, какой типаж доминирует по модели «Теремок». Порядок вариантов в вопросах каждый раз меняется.
-                    </p>
-                </div>
-                <div class="card quiz-card">
-                    <div class="quiz-intro">
-                        Для каждого вопроса выберите один вариант ответа. Тест никуда не отправляется —
-                        результат вы увидите сразу на этой странице. Если захотите, сможете отправить заявку и получить консультацию по вашей команде.
-                    </div>
-                    <form id="quiz-form" onsubmit="event.preventDefault(); calculateQuizResult();">
-                        <!-- Вопросы остаются прежними -->
-                        <!-- Вопрос 1 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">1. Как сотрудник в целом относится к задачам и контролю?</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q1" value="A">
-                                    <span>Делает задачи только под постоянным контролем, легко «теряется», если его не трогать.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q1" value="A">
-                                    <span>Часто откладывает задачи, пока его не «подгонят»; сам почти не инициирует движение по задачам.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q1" value="B">
-                                    <span>Делает задачи нормально, если понимает, что за это платят или будет премия; без финансового стимула быстро «остывает».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q1" value="C">
-                                    <span>Включается в задачи, если видит для себя пользу: возможность проявиться, усилить статус, «засветиться» перед руководством.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q1" value="D">
-                                    <span>Ставит себе рамку сам: следит за качеством, уточняет вводные, доводит до результата даже без жёсткого контроля.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 2 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">2. Реакция на дополнительную задачу «сверху» (вне прямых обязанностей)</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q2" value="A">
-                                    <span>Скорее раздражение: «опять нагрузили», ищет, как отложить или переложить.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q2" value="B">
-                                    <span>Первый вопрос: «А сколько за это доплатят?»; готов взяться, если выгода понятна.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q2" value="B">
-                                    <span>Готов взяться, если есть понятная премия, KPI или сдельная оплата; без этого пытается отказаться от задачи.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q2" value="C">
-                                    <span>Смотрит, даёт ли это видимость и продвижение: «Если это заметит руководство или клиент, я в теме».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q2" value="D">
-                                    <span>Оценивает разумность и нагрузку: если видит смысл для дела/клиента, вписывается и предлагает, как сделать эффективнее.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 3 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">3. Что для него/неё главный ориентир в работе?</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q3" value="A">
-                                    <span>«Главное, чтобы меня меньше трогали и не ругали».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="B">
-                                    <span>«Главное — деньги: оклад, премии, бонусы. Остальное вторично».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="C">
-                                    <span>«Важно, какое у меня место, статус, влияние, кого я знаю и как это можно использовать».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="C">
-                                    <span>Часто говорит о должностях, статусе, «уровне» компании и людей вокруг; ориентируется на престиж и заметность.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q3" value="D">
-                                    <span>«Важно делать работу нормально: качество, результат, довольный клиент; деньги и статус — как следствие».</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 4 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">4. Отношение к обучению и развитию</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q4" value="A">
-                                    <span>На обучение реагирует как на лишнюю нагрузку: «мне и так хватает», «давайте работать, а не учиться».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="B">
-                                    <span>Готов учиться, если за это явно доплачивают или обещают быстрый финансовый эффект.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="C">
-                                    <span>Интересуется обучением, если оно усиливает личный бренд: модные курсы, сертификаты, новые связи.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="D">
-                                    <span>Воспринимает обучение как способ работать лучше и профессиональнее; сам/сама может запрашивать развитие по теме работы.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q4" value="D">
-                                    <span>Сам/сама находит материалы, курсы, просит обратную связь, чтобы расти в профессии и улучшать результат.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 5 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">5. Как ведёт себя при ошибке или проблеме по его/её вине?</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q5" value="A">
-                                    <span>Быстро ищет внешние причины: «меня не так проинструктировали», «клиент сам виноват», уходит от ответственности.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q5" value="A">
-                                    <span>Старается уйти от разговора по сути, переключить внимание на чужие ошибки или обстоятельства.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q5" value="B">
-                                    <span>Упирает на формальное: «я сделал(а) как мне сказали», старается не потерять деньги/премию.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q5" value="C">
-                                    <span>В первую очередь думает о том, как ситуация отразится на личной репутации; маневрирует, чтобы минимизировать удар по себе.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q5" value="D">
-                                    <span>Признаёт свою зону ответственности, разбирается в причинах, предлагает, как не повторить ситуацию.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 6 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">6. Отношение к клиентам (внешним или внутренним)</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q6" value="A">
-                                    <span>Общается формально, делает минимум по инструкции, легко раздражается на «сложных» клиентов.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q6" value="B">
-                                    <span>Вежлив/а, пока клиент «несёт деньги» или напрямую влияет на доход; если выгоды нет — интерес быстро падает.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q6" value="C">
-                                    <span>С клиентами выстраивает отношения, если они могут пригодиться: ценные контакты, статусные проекты.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q6" value="D">
-                                    <span>Старается сделать так, чтобы клиент получил качественный, устойчивый результат; думает про долгосрочные отношения.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q6" value="D">
-                                    <span>Иногда спорит с клиентом, если видит, что так будет лучше для результата, но при этом сохраняет уважительный тон.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 7 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">7. Поведение в команде</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q7" value="A">
-                                    <span>Держится в тени, избегает ответственности, предпочитает «быть незаметным» и не высовываться.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q7" value="B">
-                                    <span>Готов помогать коллегам, если это оплачивается или прямо обещана выгода; в остальных случаях предпочитает делать только своё.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q7" value="C">
-                                    <span>Активен в коммуникациях, легко вступает в союзы, «играет в политику»; выбирает те активности, где можно проявиться.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q7" value="C">
-                                    <span>Активно участвует в неформальных разговорах, легко влияет на настроение команды и групповые решения.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q7" value="D">
-                                    <span>Готов брать на себя ключевые участки работы, помогает слабым местам команды, держит профессиональную планку.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Вопрос 8 -->
-                        <div class="quiz-question">
-                            <div class="quiz-question-title">8. Взгляд на ближайшие 1–2 года</div>
-                            <div class="quiz-options">
-                                <label>
-                                    <input type="radio" name="q8" value="A">
-                                    <span>Конкретных планов нет: «посмотрим, как пойдёт», «главное — чтобы всё было спокойно».</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q8" value="B">
-                                    <span>Хотел(а) бы выйти на более высокий доход, возможно — сменить место на то, где больше платят.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q8" value="B">
-                                    <span>Главная цель — выйти на определённый уровень дохода; не так важно, где именно работать.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q8" value="C">
-                                    <span>Хотел(а) бы вырасти по статусу/должности, расширить влияние, обзавестись полезными связями.</span>
-                                </label>
-                                <label>
-                                    <input type="radio" name="q8" value="D">
-                                    <span>Хотел(а) бы углубиться в профессиональной теме, взять более сложные задачи/проекты и вырасти как специалист.</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="quiz-actions">
-                            <button type="submit" class="btn-primary btn-main">
-                                Посчитать результат
-                            </button>
-                            <div id="quiz-error" class="quiz-error"></div>
-                        </div>
-
-                        <div id="quiz-result" class="quiz-result"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
         <!-- Experts -->
-        <section class="section section-alt" id="experts">
+        <section class="section section-dark" id="experts">
             <div class="container">
                 <div class="section-header">
                     <div class="section-kicker">Кому можно доверять</div>
@@ -1226,111 +895,44 @@
             </div>
         </section>
 
-        <!-- Registration -->
-        <section class="section section-muted" id="registration">
+        <!-- Registration (без встроенной формы, только CTA + описание) -->
+        <section class="section section-alt" id="registration">
             <div class="container">
                 <div class="section-header">
                     <div class="section-kicker">Заявка на участие</div>
                     <h2>Оставьте контакты — вышлем программу и обсудим участие</h2>
                     <p class="section-lead">
-                        Заполните короткую форму. Мы свяжемся с вами в ближайший рабочий день,
+                        Заполните короткую заявку во всплывающем окне. Мы свяжемся с вами в ближайший рабочий день,
                         ответим на вопросы и предложим удобный формат участия в «Теремке».
-                        Если вы проходили мини-тест, результат автоматически добавится к заявке.
                     </p>
                 </div>
                 <div class="form-wrapper">
                     <div class="form-grid">
-                        <form action="https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec" method="post">
-                            <!-- honeypot -->
-                            <div style="position:absolute; left:-9999px; opacity:0; pointer-events:none;">
-                                <label>Ваш сайт (оставьте пустым)</label>
-                                <input type="text" name="website" autocomplete="off">
-                            </div>
-
-                            <!-- секретный токен -->
-                            <input type="hidden" name="token" value="teremok2025">
-
-                            <!-- результат мини-теста -->
-                            <input type="hidden" name="quiz_type" id="quiz_type">
-                            <input type="hidden" name="quiz_raw" id="quiz_raw">
-
-                            <div class="field-group">
-                                <label for="name">Имя <span class="required">*</span></label>
-                                <input class="input" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
-                            </div>
-
-                            <div class="field-group">
-                                <label for="role">Ваша роль <span class="required">*</span></label>
-                                <select class="select" id="role" name="role" required>
-                                    <option value="" disabled selected>Выберите вариант</option>
-                                    <option value="owner">Собственник / генеральный директор</option>
-                                    <option value="head">Руководитель отдела / филиала</option>
-                                    <option value="hr">HR / рекрутер</option>
-                                    <option value="sales">Руководитель отдела продаж</option>
-                                    <option value="other">Другое</option>
-                                </select>
-                            </div>
-
-                            <div class="field-group">
-                                <label for="company">Компания</label>
-                                <input class="input" type="text" id="company" name="company" placeholder="Название компании">
-                            </div>
-
-                            <div class="field-group">
-                                <label for="team_size">Размер команды</label>
-                                <input class="input" type="text" id="team_size" name="team_size" placeholder="Например: 25 человек, отдел продаж 8 человек">
-                            </div>
-
-                            <div class="field-group">
-                                <label for="phone">Телефон <span class="required">*</span></label>
-                                <input class="input" type="tel" id="phone" name="phone" placeholder="+375 (__) ___-__-__" required>
-                                <div class="field-hint">
-                                    Номер нужен, чтобы связаться с вами в удобном мессенджере.
-                                </div>
-                            </div>
-
-                            <div class="field-group">
-                                <label for="messenger">Удобный мессенджер</label>
-                                <select class="select" id="messenger" name="messenger">
-                                    <option value="" disabled selected>Выберите вариант</option>
-                                    <option value="telegram">Telegram</option>
-                                    <option value="whatsapp">WhatsApp</option>
-                                    <option value="viber">Viber</option>
-                                    <option value="other">Другое</option>
-                                </select>
-                            </div>
-
-                            <div class="field-group">
-                                <label for="email">E-mail</label>
-                                <input class="input" type="email" id="email" name="email" placeholder="для отправки программы и материалов">
-                            </div>
-
-                            <div class="field-group">
-                                <label for="request">Ваш запрос (кратко)</label>
-                                <textarea id="request" name="request" placeholder="С чем хотите поработать на «Теремке» — команда, вовлечённость, подбор, управленческие решения и т.п."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-primary btn-main">
-                                Оставить заявку на «Теремок»
+                        <div>
+                            <p class="form-secondary">
+                                Нажмите на кнопку ниже, чтобы открыть форму заявки. Мы спросим только то, что действительно
+                                нужно для предметного разговора: кто вы, какая команда и как с вами связаться.
+                            </p>
+                            <button type="button" class="btn-primary btn-full" onclick="openLeadModal()">
+                                Открыть форму заявки
                             </button>
-
-                            <div class="form-note">
-                                Мы не рассылаем спам и не передаём контакты третьим лицам.
-                                Свяжемся только по поводу программы «Теремок».
-                            </div>
-                        </form>
-                        <div class="form-secondary">
-                            <p>
+                            <p class="form-note">
                                 После отправки заявки вы получите:
                             </p>
-                            <ul>
+                            <ul class="metrics-list">
                                 <li>PDF с программой «Теремок» и форматом участия;</li>
                                 <li>ориентиры по длительности и стоимости;</li>
                                 <li>связь с консультантом «Сталкер-Медиа» для уточнения деталей под вашу компанию.</li>
                             </ul>
-                            <p style="margin-top:10px;">
+                        </div>
+                        <div class="form-secondary">
+                            <p>
                                 Если вам удобнее написать сами, вы можете просто отправить нам короткое сообщение
                                 в мессенджере с пометкой «Теремок» и количеством сотрудников — и мы продолжим диалог там.
+                            </p>
+                            <p style="margin-top:10px;">
+                                Но если вы заполните форму, мы заранее подготовимся к разговору: посмотрим на ваш запрос,
+                                масштаб команды и сможем предложить точный формат участия и ориентиры по стоимости.
                             </p>
                         </div>
                     </div>
@@ -1349,116 +951,109 @@
     </footer>
 </div>
 
+<!-- Модальное окно с формой заявки -->
+<div class="modal-backdrop" id="leadModal" aria-hidden="true">
+    <div class="modal-overlay" onclick="closeLeadModal()"></div>
+
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" onclick="closeLeadModal()">×</button>
+
+        <h2 id="modalTitle">Заявка на программу «Теремок»</h2>
+        <p class="modal-subtitle">
+            Оставьте контакты и кратко опишите вашу ситуацию. Мы свяжемся в ближайший рабочий день,
+            вышлем программу и обсудим, как «Теремок» может помочь именно вашей команде.
+        </p>
+
+        <form action="https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec"
+              method="post" target="_blank">
+            <div class="field-group">
+                <label for="name">Имя <span class="required">*</span></label>
+                <input class="input" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+            </div>
+
+            <div class="field-group">
+                <label for="role">Ваша роль <span class="required">*</span></label>
+                <select class="select" id="role" name="role" required>
+                    <option value="" disabled selected>Выберите вариант</option>
+                    <option value="owner">Собственник / генеральный директор</option>
+                    <option value="head">Руководитель отдела / филиала</option>
+                    <option value="hr">HR / рекрутер</option>
+                    <option value="sales">Руководитель отдела продаж</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="company">Компания</label>
+                <input class="input" type="text" id="company" name="company" placeholder="Название компании">
+            </div>
+
+            <div class="field-group">
+                <label for="team_size">Размер команды</label>
+                <input class="input" type="text" id="team_size" name="team_size" placeholder="Например: 25 человек, отдел продаж 8 человек">
+            </div>
+
+            <div class="field-group">
+                <label for="phone">Телефон <span class="required">*</span></label>
+                <input class="input" type="tel" id="phone" name="phone" placeholder="+375 (__) ___-__-__" required>
+                <div class="field-hint">
+                    Номер нужен, чтобы связаться с вами в удобном мессенджере.
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="messenger">Удобный мессенджер</label>
+                <select class="select" id="messenger" name="messenger">
+                    <option value="" disabled selected>Выберите вариант</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="viber">Viber</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="email">E-mail</label>
+                <input class="input" type="email" id="email" name="email" placeholder="для отправки программы и материалов">
+            </div>
+
+            <div class="field-group">
+                <label for="request">Ваш запрос (кратко)</label>
+                <textarea id="request" name="request" placeholder="С чем хотите поработать на «Теремке» — команда, вовлечённость, подбор, управленческие решения и т.п."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary btn-full">
+                Отправить заявку
+            </button>
+
+            <p class="form-note">
+                Мы не рассылаем спам и не передаём контакты третьим лицам.
+                Свяжемся только по поводу программы «Теремок».
+            </p>
+        </form>
+    </div>
+</div>
+
 <script>
-    // Перемешивание вариантов ответов внутри каждого вопроса
-    function shuffleQuizOptions() {
-        var containers = document.querySelectorAll('.quiz-options');
-        containers.forEach(function (container) {
-            var labels = Array.from(container.querySelectorAll('label'));
-            // Фишер–Йетс
-            for (var i = labels.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var tmp = labels[i];
-                labels[i] = labels[j];
-                labels[j] = tmp;
-            }
-            container.innerHTML = '';
-            labels.forEach(function (label) {
-                container.appendChild(label);
-            });
-        });
+    function openLeadModal() {
+        const modal = document.getElementById('leadModal');
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
     }
 
-    document.addEventListener('DOMContentLoaded', shuffleQuizOptions);
-
-    function calculateQuizResult() {
-        var totalQuestions = 8;
-        var scores = { A: 0, B: 0, C: 0, D: 0 };
-
-        for (var i = 1; i <= totalQuestions; i++) {
-            var selected = document.querySelector('input[name="q' + i + '"]:checked');
-            if (!selected) {
-                var err = document.getElementById('quiz-error');
-                err.textContent = 'Пожалуйста, ответьте на все вопросы, чтобы увидеть результат.';
-                var resHidden = document.getElementById('quiz-result');
-                resHidden.style.display = 'none';
-                resHidden.innerHTML = '';
-                return;
-            }
-            var val = selected.value; // A / B / C / D
-            if (scores.hasOwnProperty(val)) {
-                scores[val]++;
-            }
-        }
-
-        document.getElementById('quiz-error').textContent = '';
-
-        var typeNames = {
-            A: 'Птица',
-            B: 'Хомяк',
-            C: 'Лиса',
-            D: 'Профи'
-        };
-
-        var typeDescriptions = {
-            A: 'Сотрудник с мотивацией через контроль и избегание проблем. Работает устойчиво только под внешним контролем, стремится «быть незаметным» и минимизировать риск наказания.',
-            B: 'Сотрудник с выраженным денежным мотивом. Включается в задачи, когда видит прямую личную выгоду: деньги, бонусы, быстрый материальный результат.',
-            C: 'Сотрудник со статусно-карьерным мотивом. Ценит влияние, связи, возможности проявиться, продвинуться и усилить своё положение.',
-            D: 'Профессионально ориентированный сотрудник. Опирается на качество работы, ответственность, интерес к делу и развитию в своей теме.'
-        };
-
-        var entries = Object.entries(scores);
-        var max = 0;
-        entries.forEach(function (pair) {
-            if (pair[1] > max) max = pair[1];
-        });
-
-        var topTypes = entries.filter(function (pair) {
-            return pair[1] === max;
-        }).map(function (pair) { return pair[0]; });
-
-        var resultEl = document.getElementById('quiz-result');
-        var html = '';
-
-        var quizTypeValue;
-        if (topTypes.length === 1) {
-            var t = topTypes[0];
-            quizTypeValue = typeNames[t];
-
-            html += '<strong>Доминирующий тип: ' + typeNames[t] + '</strong><br>';
-            html += typeDescriptions[t] + '<br><br>';
-            html += '<span>Баллы — Птица: ' + scores.A +
-                ', Хомяк: ' + scores.B +
-                ', Лиса: ' + scores.C +
-                ', Профи: ' + scores.D + '.</span>';
-        } else {
-            var typesHuman = topTypes.map(function (t) { return typeNames[t]; }).join(' и ');
-            quizTypeValue = 'Смешанный: ' + typesHuman;
-
-            html += '<strong>Смешанный профиль: ' + typesHuman + '</strong><br>';
-            html += 'У сотрудника выражены несколько мотивов одновременно. Посмотрите на сочетание баллов:<br><br>';
-            html += '<span>Птица: ' + scores.A +
-                ', Хомяк: ' + scores.B +
-                ', Лиса: ' + scores.C +
-                ', Профи: ' + scores.D + '.</span>';
-        }
-
-        html += '<br><br><span>Если хотите разобрать 2–3 ключевых сотрудника по этой модели глубже, оставьте заявку ниже — свяжемся и посмотрим на вашу команду точечно.</span>';
-
-        var quizRawValue = 'A:' + scores.A + ', B:' + scores.B + ', C:' + scores.C + ', D:' + scores.D;
-
-        // Записываем в скрытые поля формы заявки (если они есть на странице)
-        var typeInput = document.getElementById('quiz_type');
-        var rawInput = document.getElementById('quiz_raw');
-        if (typeInput && rawInput) {
-            typeInput.value = quizTypeValue;
-            rawInput.value = quizRawValue;
-        }
-
-        resultEl.innerHTML = html;
-        resultEl.style.display = 'block';
-        resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    function closeLeadModal() {
+        const modal = document.getElementById('leadModal');
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
     }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeLeadModal();
+        }
+    });
 </script>
 </body>
 </html>
