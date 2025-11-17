@@ -477,6 +477,73 @@
             color: var(--accent);
         }
 
+        /* Quiz */
+        .quiz-card {
+            margin-top: 8px;
+        }
+
+        .quiz-intro {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            margin-bottom: 14px;
+        }
+
+        .quiz-question-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 13px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-top: 3px;
+        }
+
+        .quiz-actions {
+            margin-top: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(15,23,42,0.9);
+            border: 1px solid rgba(148,163,184,0.5);
+            font-size: 13px;
+        }
+
+        .quiz-result strong {
+            font-size: 14px;
+        }
+
+        .quiz-error {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--error);
+        }
+
         footer {
             border-top: 1px solid rgba(148,163,184,0.25);
             padding: 16px 20px 22px;
@@ -573,6 +640,7 @@
                 <a href="#about">О программе</a>
                 <a href="#who">Для кого</a>
                 <a href="#results">Что получите</a>
+                <a href="#test">Мини-тест</a>
                 <a href="#experts">Авторы</a>
                 <a href="#registration" class="nav-cta">
                     Записаться
@@ -770,8 +838,212 @@
             </div>
         </section>
 
+        <!-- Mini test -->
+        <section class="section section-dark" id="test">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-kicker">Мини-тест</div>
+                    <h2>Кто ваш сотрудник по «Теремку»</h2>
+                    <p class="section-lead">
+                        Держите в голове одного конкретного сотрудника, отвечайте интуитивно по 8 вопросам —
+                        и увидите, какой типаж доминирует по модели «Теремок».
+                    </p>
+                </div>
+                <div class="card quiz-card">
+                    <div class="quiz-intro">
+                        Для каждого вопроса выберите один вариант ответа. Тест никуда не отправляется —
+                        результат вы увидите сразу на этой странице.
+                    </div>
+                    <form id="quiz-form" onsubmit="event.preventDefault(); calculateQuizResult();">
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">1. Как сотрудник в целом относится к задачам и контролю?</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q1" value="A">
+                                    <span>Делает задачи только под постоянным контролем, легко «теряется», если его не трогать.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q1" value="B">
+                                    <span>Делает задачи нормально, если понимает, что за это платят или будет премия; без финансового стимула быстро «остывает».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q1" value="C">
+                                    <span>Включается в задачи, если видит для себя пользу: возможность проявиться, усилить статус, «засветиться» перед руководством.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q1" value="D">
+                                    <span>Ставит себе рамку сам: следит за качеством, уточняет вводные, доводит до результата даже без жёсткого контроля.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">2. Реакция на дополнительную задачу «сверху» (вне прямых обязанностей)</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q2" value="A">
+                                    <span>Скорее раздражение: «опять нагрузили», ищет, как отложить или переложить.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q2" value="B">
+                                    <span>Первый вопрос: «А сколько за это доплатят?»; готов взяться, если выгода понятна.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q2" value="C">
+                                    <span>Смотрит, даёт ли это видимость и продвижение: «Если это заметит руководство или клиент, я в теме».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q2" value="D">
+                                    <span>Оценивает разумность и нагрузку: если видит смысл для дела/клиента, вписывается и предлагает, как сделать эффективнее.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">3. Что для него/неё главный ориентир в работе?</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q3" value="A">
+                                    <span>«Главное, чтобы меня меньше трогали и не ругали».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q3" value="B">
+                                    <span>«Главное — деньги: оклад, премии, бонусы. Остальное вторично».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q3" value="C">
+                                    <span>«Важно, какое у меня место, статус, влияние, кого я знаю и как это можно использовать».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q3" value="D">
+                                    <span>«Важно делать работу нормально: качество, результат, довольный клиент; деньги и статус — как следствие».</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">4. Отношение к обучению и развитию</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q4" value="A">
+                                    <span>На обучение реагирует как на лишнюю нагрузку: «мне и так хватает», «давайте работать, а не учиться».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q4" value="B">
+                                    <span>Готов учиться, если за это явно доплачивают или обещают быстрый финансовый эффект.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q4" value="C">
+                                    <span>Интересуется обучением, если оно усиливает личный бренд: модные курсы, сертификаты, новые связи.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q4" value="D">
+                                    <span>Воспринимает обучение как способ работать лучше и профессиональнее; сам/сама может запрашивать развитие по теме работы.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">5. Как ведёт себя при ошибке или проблеме по его/её вине?</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q5" value="A">
+                                    <span>Быстро ищет внешние причины: «меня не так проинструктировали», «клиент сам виноват», уходит от ответственности.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q5" value="B">
+                                    <span>Упирает на формальное: «я сделал(а) как мне сказали», старается не потерять деньги/премию.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q5" value="C">
+                                    <span>В первую очередь думает о том, как ситуация отразится на личной репутации; маневрирует, чтобы минимизировать удар по себе.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q5" value="D">
+                                    <span>Признаёт свою зону ответственности, разбирается в причинах, предлагает, как не повторить ситуацию.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">6. Отношение к клиентам (внешним или внутренним)</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q6" value="A">
+                                    <span>Общается формально, делает минимум по инструкции, легко раздражается на «сложных» клиентов.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q6" value="B">
+                                    <span>Вежлив/а, пока клиент «несёт деньги» или напрямую влияет на доход; если выгоды нет — интерес быстро падает.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q6" value="C">
+                                    <span>С клиентами выстраивает отношения, если они могут пригодиться: ценные контакты, статусные проекты.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q6" value="D">
+                                    <span>Старается сделать так, чтобы клиент получил качественный, устойчивый результат; думает про долгосрочные отношения.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">7. Поведение в команде</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q7" value="A">
+                                    <span>Держится в тени, избегает ответственности, предпочитает «быть незаметным» и не высовываться.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q7" value="B">
+                                    <span>Готов помогать коллегам, если это оплачивается или прямо обещана выгода; в остальных случаях предпочитает делать только своё.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q7" value="C">
+                                    <span>Активен в коммуникациях, легко вступает в союзы, «играет в политику»; выбирает те активности, где можно проявиться.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q7" value="D">
+                                    <span>Готов брать на себя ключевые участки работы, помогает слабым местам команды, держит профессиональную планку.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <div class="quiz-question-title">8. Взгляд на ближайшие 1–2 года</div>
+                            <div class="quiz-options">
+                                <label>
+                                    <input type="radio" name="q8" value="A">
+                                    <span>Конкретных планов нет: «посмотрим, как пойдёт», «главное — чтобы всё было спокойно».</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q8" value="B">
+                                    <span>Хотел(а) бы выйти на более высокий доход, возможно — сменить место на то, где больше платят.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q8" value="C">
+                                    <span>Хотел(а) бы вырасти по статусу/должности, расширить влияние, обзавестись полезными связями.</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="q8" value="D">
+                                    <span>Хотел(а) бы углубиться в профессиональной теме, взять более сложные задачи/проекты и вырасти как специалист.</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button type="submit" class="btn-primary">Посчитать результат</button>
+                            <div id="quiz-error" class="quiz-error"></div>
+                        </div>
+
+                        <div id="quiz-result" class="quiz-result"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- Experts -->
-        <section class="section section-dark" id="experts">
+        <section class="section section-alt" id="experts">
             <div class="container">
                 <div class="section-header">
                     <div class="section-kicker">Кому можно доверять</div>
@@ -821,7 +1093,7 @@
         </section>
 
         <!-- Registration -->
-        <section class="section section-alt" id="registration">
+        <section class="section section-dark" id="registration">
             <div class="container">
                 <div class="section-header">
                     <div class="section-kicker">Заявка на участие</div>
@@ -834,6 +1106,15 @@
                 <div class="form-wrapper">
                     <div class="form-grid">
                         <form action="https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec" method="post">
+                            <!-- honeypot -->
+                            <div style="position:absolute; left:-9999px; opacity:0; pointer-events:none;">
+                                <label>Ваш сайт (оставьте пустым)</label>
+                                <input type="text" name="website" autocomplete="off">
+                            </div>
+
+                            <!-- секретный токен -->
+                            <input type="hidden" name="token" value="teremok2025">
+
                             <div class="field-group">
                                 <label for="name">Имя <span class="required">*</span></label>
                                 <input class="input" type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
@@ -928,5 +1209,76 @@
         </div>
     </footer>
 </div>
+
+<script>
+    function calculateQuizResult() {
+        var totalQuestions = 8;
+        var scores = { A: 0, B: 0, C: 0, D: 0 };
+
+        for (var i = 1; i <= totalQuestions; i++) {
+            var selected = document.querySelector('input[name="q' + i + '"]:checked');
+            if (!selected) {
+                var err = document.getElementById('quiz-error');
+                err.textContent = 'Пожалуйста, ответьте на все вопросы, чтобы увидеть результат.';
+                var resHidden = document.getElementById('quiz-result');
+                resHidden.style.display = 'none';
+                resHidden.innerHTML = '';
+                return;
+            }
+            scores[selected.value]++;
+        }
+
+        document.getElementById('quiz-error').textContent = '';
+
+        var typeNames = {
+            A: 'Птица',
+            B: 'Хомяк',
+            C: 'Лиса',
+            D: 'Профи'
+        };
+
+        var typeDescriptions = {
+            A: 'Сотрудник с мотивацией через контроль и избегание проблем. Работает устойчиво только под внешним контролем, стремится «быть незаметным» и минимизировать риск наказания.',
+            B: 'Сотрудник с выраженным денежным мотивом. Включается в задачи, когда видит прямую личную выгоду: деньги, бонусы, быстрый материальный результат.',
+            C: 'Сотрудник со статусно-карьерным мотивом. Ценит влияние, связи, возможности проявиться, продвинуться и усилить своё положение.',
+            D: 'Профессионально ориентированный сотрудник. Опирается на качество работы, ответственность, интерес к делу и развитию в своей теме.'
+        };
+
+        var entries = Object.entries(scores);
+        var max = 0;
+        entries.forEach(function (pair) {
+            if (pair[1] > max) max = pair[1];
+        });
+
+        var topTypes = entries.filter(function (pair) {
+            return pair[1] === max;
+        }).map(function (pair) { return pair[0]; });
+
+        var resultEl = document.getElementById('quiz-result');
+        var html = '';
+
+        if (topTypes.length === 1) {
+            var t = topTypes[0];
+            html += '<strong>Доминирующий тип: ' + typeNames[t] + '</strong><br>';
+            html += typeDescriptions[t] + '<br><br>';
+            html += '<span>Баллы — Птица: ' + scores.A +
+                    ', Хомяк: ' + scores.B +
+                    ', Лиса: ' + scores.C +
+                    ', Профи: ' + scores.D + '.</span>';
+        } else {
+            var typesHuman = topTypes.map(function (t) { return typeNames[t]; }).join(' и ');
+            html += '<strong>Смешанный профиль: ' + typesHuman + '</strong><br>';
+            html += 'У сотрудника выражены несколько мотивов одновременно. Посмотрите на сочетание баллов:<br><br>';
+            html += '<span>Птица: ' + scores.A +
+                    ', Хомяк: ' + scores.B +
+                    ', Лиса: ' + scores.C +
+                    ', Профи: ' + scores.D + '.</span>';
+        }
+
+        resultEl.innerHTML = html;
+        resultEl.style.display = 'block';
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+</script>
 </body>
 </html>
