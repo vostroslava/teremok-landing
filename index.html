@@ -1192,24 +1192,24 @@
 
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwhUyeeEtMQTUYr5OLfiNUt9yXBGJ691a2XcqbOWnzvOAqnNsbUuGOBdo7dvdxmczBaIw/exec";
 
-    let leadData = null;
-    let leadModalMode = 'lead'; // 'lead' или 'test'
+let leadData = null;
 
-    function openLeadModal(mode) {
-        leadModalMode = mode || 'lead';
-        const modal = document.getElementById('leadModal');
-        if (!modal) return;
+document.addEventListener('DOMContentLoaded', function () {
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+        leadForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(leadForm);
+            leadData = Object.fromEntries(formData.entries());
 
-        const banner = document.getElementById('testAccessBanner');
-        if (banner) {
-            banner.style.display = (leadModalMode === 'test') ? 'block' : 'none';
-        }
-
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
+            closeLeadModal();
+            openTestModal();
+        });
     }
+});
+
 
     function closeLeadModal() {
         const modal = document.getElementById('leadModal');
@@ -1255,16 +1255,16 @@
         }
     });
 
-    function submitMiniTest() {
+  function submitMiniTest() {
     const types = { ptica: 0, homiak: 0, lisa: 0, profi: 0 };
     const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
 
     for (const q of questions) {
         const checked = document.querySelector('input[name="' + q + '"]:checked');
         if (checked && types.hasOwnProperty(checked.value)) {
+            // считаем только «типажные» варианты, value = none пропускаем
             types[checked.value]++;
         }
-        // если value === 'none' или ничего не выбрано — просто не учитываем
     }
 
     let mainType = null;
@@ -1275,6 +1275,117 @@
             mainType = key;
         }
     }
+
+    const resultEl = document.getElementById('testResult');
+    const nextStepEl = document.getElementById('testNextStep');
+
+    if (!mainType || maxScore <= 0) {
+        if (resultEl) {
+            resultEl.textContent =
+                'Пожалуйста, ответьте хотя бы на несколько вопросов, чтобы мы могли определить типаж.';
+        }
+        if (nextStepEl) {
+            nextStepEl.style.display = 'none';
+        }
+        return;
+    }
+
+    const labels = {
+        ptica: 'Птица — работает под принуждением, без внешнего контроля «падает» по результату.',
+        homiak: 'Хомяк — сильная ориентация на деньги и личную выгоду, риск «обнуления» при снижении бонусов.',
+        lisa: 'Лиса — про статус, влияние и собственные интересы, важна видимость и позиция.',
+        profi: 'Профи — делает по совести, фокус на задаче, качестве и результате компании.'
+    };
+
+    const resultText = labels[mainType] || mainType;
+
+    if (resultEl) {
+        resultEl.textContent =
+            'По вашим ответам этот сотрудник ближе всего к типажу: ' + resultText;
+    }
+
+    if (nextStepEl) {
+        nextStepEl.style.display = 'block';
+    }
+
+    // отправляем и форму, и результат теста в Google Script
+    sendToGoogleSheet(mainType, types, resultText);
+}
+
+function sendToGoogleSheet(mainType, types, resultText) {
+    const fd = new FormData();
+
+    // данные формы регистрации (мы их раньше сохранили в leadData при submit формы)
+    if (window.leadData) {
+        fd.append('name', leadData.name || '');
+        fd.append('role', leadData.role || '');
+        fd.append('company', leadData.company || '');
+        fd.append('team_size', leadData.team_size || '');
+        fd.append('phone', leadData.phone || '');
+        fd.append('messenger', leadData.messenger || '');
+        fd.append('email', leadData.email || '');
+        fd.append('request', leadData.request || '');
+    } else {
+        // на всякий случай, если по какой-то причине тест прошли без формы
+        fd.append('name', '');
+        fd.append('role', '');
+        fd.append('company', '');
+        fd.append('team_size', '');
+        fd.append('phone', '');
+        fd.append('messenger', '');
+        fd.append('email', '');
+        fd.append('request', '');
+    }
+
+    // данные теста
+    fd.append('test_main_type', mainType || '');
+    fd.append('test_main_text', resultText || '');
+    fd.append('test_ptica', types.ptica || 0);
+    fd.append('test_homiak', types.homiak || 0);
+    fd.append('test_lisa', types.lisa || 0);
+    fd.append('test_profi', types.profi || 0);
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: fd,
+        mode: 'no-cors'
+    }).catch(function (err) {
+        console.error('Ошибка отправки в Google Script', err);
+    });
+}
+
+
+function sendToGoogleSheet(mainType, types, resultText) {
+    const fd = new FormData();
+
+    // данные формы регистрации (мы их раньше сохранили в leadData при submit формы)
+    if (window.leadData) {
+        fd.append('name', leadData.name || '');
+        fd.append('role', leadData.role || '');
+        fd.append('company', leadData.company || '');
+        fd.append('team_size', leadData.team_size || '');
+        fd.append('phone', leadData.phone || '');
+        fd.append('messenger', leadData.messenger || '');
+        fd.append('email', leadData.email || '');
+        fd.append('request', leadData.request || '');
+    }
+
+    // данные теста
+    fd.append('test_main_type', mainType || '');
+    fd.append('test_main_text', resultText || '');
+    fd.append('test_ptica', types.ptica || 0);
+    fd.append('test_homiak', types.homiak || 0);
+    fd.append('test_lisa', types.lisa || 0);
+    fd.append('test_profi', types.profi || 0);
+
+    fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: fd,
+        mode: 'no-cors'
+    }).catch(function (err) {
+        console.error('Ошибка отправки в Google Script', err);
+    });
+}
 
     const resultEl = document.getElementById('testResult');
     const nextStepEl = document.getElementById('testNextStep');
